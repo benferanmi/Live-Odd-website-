@@ -1,0 +1,64 @@
+footer {
+    color: white;
+    background: inherit;
+}
+
+.footers {
+    display: block;
+    width: 100%;
+}
+
+.footer {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.footer-left {
+    padding: 10px;
+}
+
+.fotl {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+
+.footer-right {
+    padding: 10px;
+    padding-top: 4em;
+    padding-bottom: 6em;
+}
+
+.fotr-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fotr-nav h3 {
+    font-family: 'Poppins', 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fafafa;
+}
+
+
+.fot-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.fot-nav a {
+    font-size: 12px;
+    font-family: "Poppins", "Lato", sans-serif;
+    font-weight: 400;
+    color: white;
+}
+

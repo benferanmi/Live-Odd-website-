@@ -1,0 +1,45 @@
+.headers {
+  display: block;
+  height: 139px;
+  z-index: 999;
+  position: relative;
+  background: transparent;
+}
+
+.header {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  align-items: center;
+}
+
+.head-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.head-menu {
+  color: var(--golden-text);
+  display: inline-flex;
+}
+
+.head-menu a {
+  color: inherit;
+  margin-left: 55px;
+}
+
+.head-reg {
+  margin-left: auto;
+}
+.head-button {
+  background: var(--button-bg-color);
+  height: 33px;
+  border-radius: 27px;
+  padding: 10px 25px 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}

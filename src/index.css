@@ -1,0 +1,35 @@
+:root {
+  --primary-color: #3a175d;
+  --secondary-color: #2ecc71;
+  --accent-color: #e74c3c;
+  --background-color:#3a175d;
+  --text-color: #2c3e50;
+  --golden-text:#DEBE5D;
+  --gold-text931: rgba(222, 190, 93, 1);
+  --button-bg-color: rgba(223, 195, 255, 1);
+}
+
+* {
+  box-sizing:border-box ;
+  margin: 0;
+  padding: 0 ;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Lato", sans-serif;
+
+}
+
+a {
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 20px 0px;
+}
