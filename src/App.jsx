@@ -116,7 +116,7 @@ const App = () => {
             <div className="payment-card">
               <div className="pc-content">
                 <div style={{ background: 'linear-gradient(180deg, rgba(223, 195, 255, 0.75) 0%, #7323ac, #6617a0, rgba(58, 23, 93, 0) 69.9%)', borderRadius: '33px', paddingTop: '20px' }}>
-                  <div style={{ width: '80%', margin: 'auto' }}>
+                  <div className="width-80">
                     <h1>Payment Information</h1>
 
                     <div className="pc-prices">
