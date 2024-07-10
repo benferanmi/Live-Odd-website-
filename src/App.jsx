@@ -82,7 +82,7 @@ const App = () => {
                   <span className="spacer-wide"></span>
                   <h1 className="roboto-con hsize3" style={{ color: 'var(--orange-text)' }}>New Customers</h1>
                   <h1 className="hsize1 roboto-con">Every Deposit made tO</h1>
-                  <h1 className="hsize2 roboto-con bcontent-des ">GET A 20% DEPOSIT MATCH UP TO $500 IN DK DOLLARS!
+                  <h1 className="hsize2 roboto-con bcontent-des ">GET A 50% DEPOSIT MATCH UP TO $500!
                   </h1>
                   <span style={{ color: 'var(--orange-text)' }} className="bcontent-subdes roboto-con">
                     The more you play, the more youl wil earn.
@@ -263,6 +263,38 @@ const App = () => {
                 <p>USFL</p>
               </a>
             </div> */}
+          </div>
+        </div>
+      </section>
+
+    <section className="snags">
+        <div className="snag">
+          <div className="snag-heading">
+            <h2>Snag Your Play-Through Bonus</h2>
+          </div>
+
+
+          <div className="snag-contents">
+            <div className="snag-content">
+              <div className="snag-c-each">
+                <span>1</span>
+                <h3>Deposit</h3>
+                <p>Make your first deposit of $5 or more and score a bonus up to 20% of what you put in. See terms for details.</p>
+              </div>
+
+              <div className="snag-c-each">
+                <span>2</span>
+                <h3>Play</h3>
+                <p>Make your first deposit of $10 and get $50 freeplay as first time customer !</p>
+              </div>
+
+              <div className="snag-c-each">
+                <span>3</span>
+                <h3>Track</h3>
+                <p>Use the bonus tracker to see how much you’ve earned. You can keep adding to this for 90 days after depositing.</p>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
@@ -768,37 +800,7 @@ const App = () => {
         </div>
       </section>
 
-      <section className="snags">
-        <div className="snag">
-          <div className="snag-heading">
-            <h2>Snag Your Play-Through Bonus</h2>
-          </div>
-
-
-          <div className="snag-contents">
-            <div className="snag-content">
-              <div className="snag-c-each">
-                <span>1</span>
-                <h3>Deposit</h3>
-                <p>Make your first deposit of $5 or more and score a bonus up to 20% of what you put in. See terms for details.</p>
-              </div>
-
-              <div className="snag-c-each">
-                <span>2</span>
-                <h3>Play</h3>
-                <p>For every $25 played across all DraftKings products, you’ll receive $1 in site credits added to your playable balance.</p>
-              </div>
-
-              <div className="snag-c-each">
-                <span>3</span>
-                <h3>Track</h3>
-                <p>Use the bonus tracker to see how much you’ve earned. You can keep adding to this for 90 days after depositing.</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       <section className="teams">
         <div className="team">
