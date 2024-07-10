@@ -1,0 +1,43 @@
+.countdowns {
+  background: inherit;
+  display: block;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.countdown {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+.cd-each {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+.countdown-value {
+  padding: 10px 13px;
+  background-color: #debe5d;
+  color: var(--button-bg-color);
+  font-size: 40px;
+  font-weight: 700;
+}
+.countdown-text {
+  color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .countdowns {
+    margin-top: 50px;
+  }
+  .countdown {
+    gap: 10px;
+  }
+}

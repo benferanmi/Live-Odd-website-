@@ -7,6 +7,7 @@
   --golden-text:#DEBE5D;
   --gold-text931: rgba(222, 190, 93, 1);
   --button-bg-color: rgba(223, 195, 255, 1);
+  --orange-text: #f7760d;
 }
 
 * {
@@ -31,5 +32,26 @@ h1 {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  margin: 20px 0px;
+  margin: 10px 0px;
+}
+
+.roboto-con {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.spacer-wide {
+  padding-top: 150px;
+}
+
+@media screen and (max-width: 800px) {
+  .spacer-wide {
+    padding-top: 50px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .spacer-wide {
+    padding-top: 10px;
+  }
 }
