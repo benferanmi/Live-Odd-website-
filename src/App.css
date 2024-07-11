@@ -456,7 +456,10 @@ tr td:nth-child(8) {
   align-items: center;
   width: 100px;
 }
-
+.spe-content p {
+  color: white;
+  font-weight: 700;
+}
 /* snag section starts here */
 .snag {
   display: block;
@@ -627,6 +630,11 @@ font-size: 2rem;
   .snag-content {
     flex-wrap: wrap;
   }
+  .bcontent {
+    margin-top: 5%;
+    background-color: #502a76;
+    padding: 25px 0;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -635,21 +643,26 @@ font-size: 2rem;
     height: 200px;
     display: none;
   }
+  .bcontent {
+    margin-top: 1%;
+    background: #502a76;
+    padding: 15px 0;
+  }
   .bcontent-des {
     width: 95%;
   }
 
   .hsize3 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
   }
   .hsize1 {
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
     margin-top: 5px;
     margin-bottom: 5px;
   }
 
   .hsize2 {
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
   }
 
   .width-80 {
@@ -724,5 +737,9 @@ font-size: 2rem;
     gap: 50px;
     width: 70%;
     margin: auto;
+  }
+
+  .sport-bar {
+    margin-top: 40px;
   }
 }
