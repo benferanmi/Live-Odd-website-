@@ -289,8 +289,8 @@ const App = () => {
 
               <div className="snag-c-each">
                 <span>3</span>
-                <h3>Track</h3>
-                <p>Use the bonus tracker to see how much you’ve earned. You can keep adding to this for 90 days after depositing.</p>
+                <h3>Coupon + 10% Free Play</h3>
+                <p>Use our exclusive promo code to get a 50% discount on your first deposit and enjoy an additional 10% in free play!</p>
               </div>
 
             </div>

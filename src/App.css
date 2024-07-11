@@ -503,6 +503,8 @@ tr td:nth-child(8) {
   flex: 0 0 30%;
   flex-direction: column;
   gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .snag-c-each span {
@@ -522,6 +524,7 @@ font-size: 2rem;
   font-family: "Roboto Condensed", sans-serif;
   font-style: normal;
   font-weight: bold;
+  width: 190px;
   font-size: 1.7rem;
 }
 
@@ -530,6 +533,7 @@ font-size: 2rem;
   font-size: 1rem;
   line-height: 1.5rem;
   color: white;
+  text-align: center;
 }
 
 .hsize1 {
