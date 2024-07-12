@@ -29,41 +29,56 @@ import Bookmakers from "./component/sports/Bookmarker"
 const App = () => {
   // eslint-disable-next-line no-unused-vars
   const [star] = useState(Star)
-  const [odds, setOdds] = useState([]);
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const [soccerOdds, setSoccerOdds] = useState([]);
+  const [soccerLoading, setSoccerLoading] = useState(true);
+  const [soccerError, setSoccerError] = useState(null);
+  
+  const [basketballOdds, setBasketballOdds] = useState([]);
+  const [basketballLoading, setBasketballLoading] = useState(true);
+  const [basketballError, setBasketballError] = useState(null);
+  
+  const [footballOdds, setFootballOdds] = useState([]);
+  const [footballLoading, setFootballLoading] = useState(true);
+  const [footballError, setFootballError] = useState(null);
+  
+  const [rugbyOdds, setRugbyOdds] = useState([]);
+  const [rugbyLoading, setRugbyLoading] = useState(true);
+  const [rugbyError, setRugbyError] = useState(null);
+  
   const apiKey = 'ef9f27ac7b2093fc381686d461234539';
-  const sportKey = 'soccer';
-
-
+  
   useEffect(() => {
-    const fetchOdds = async () => {
-      try {
-        const response = await axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
-          params: {
-            apiKey: apiKey,
-            regions: 'us',       // Specify the region
-            markets: 'h2h',      // Specify the market type
-            oddsFormat: 'decimal' // Specify the odds format
-          },
-        });
-        setOdds(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err);
-        setLoading(false);
-      }
+    const fetchOdds = async (sport, setOddsFunc, setLoadingFunc, setErrorFunc) => {
+        try {
+            const response = await axios.get(`https://api.the-odds-api.com/v4/sports/${sport}/odds`, {
+                params: {
+                    apiKey: apiKey,
+                    regions: 'us',       // Specify the region
+                    markets: 'h2h',      // Specify the market type
+                    oddsFormat: 'decimal' // Specify the odds format
+                },
+            });
+            setOddsFunc(response.data);
+            setLoadingFunc(false);
+        } catch (err) {
+            setErrorFunc(err);
+            setLoadingFunc(false);
+        }
     };
 
-    fetchOdds();
-  }, [apiKey, sportKey]);
+    // Fetch odds for soccer
+    fetchOdds('soccer', setSoccerOdds, setSoccerLoading, setSoccerError);
+    // Fetch odds for basketball
+    fetchOdds('basketball', setBasketballOdds, setBasketballLoading, setBasketballError);
+    // Fetch odds for football
+    fetchOdds('americanfootball_nfl', setFootballOdds, setFootballLoading, setFootballError); // Adjust sport key as per API documentation for football
+    // Fetch odds for rugby
+    fetchOdds('rugby', setRugbyOdds, setRugbyLoading, setRugbyError);
+}, [apiKey]);
 
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  console.log(odds)
+  if (soccerLoading) return <div>Loading...</div>;
+  if (soccerError) return <div>Error: {soccerError.message}</div>;
 
   return (
     <main>
@@ -309,16 +324,45 @@ const App = () => {
         </div>
       </section> */}
 
-
-      {/* sport one */}
-      <section className="odds">
+      <div className="odds">
         <div className="odd">
-
-
-
-
+          <div className="odd-heads">
+            <div className="odd-head">
+              <h1>SOCCER</h1>
+              <p>ODD LINES</p>
+            </div>
+          </div>
+          {soccerOdds.length > 0 && <Bookmakers bookmakers={soccerOdds[0].bookmakers} />}
+          {soccerOdds.map((match, index) => (
+            <div key={index} className="match-container">
+              {match.bookmakers[0] && (
+                <div className="grid-container">
+                  <div className="match-teams">
+                    <div className="grid-item oddttitle">
+                      <p>{match.away_team}</p>
+                      <p>{match.home_team}</p>
+                      <p>Draw</p>
+                      <span className="oddtline"></span>
+                    </div>
+                  </div>
+                  {match.bookmakers.map((bookmaker, index) => (
+                    <div key={index} className="grid-item align-center">
+                      <div className="match-odd">
+                        {bookmaker.markets[0].outcomes.map((outcome, index) => (
+                          <>
+                            <p key={index}>{outcome.price}</p>
+                          </>
+                        ))}
+                      </div>
+                      <span style={{ height: '15px' }}></span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
       <div className="odds">
         <div className="odd">
@@ -328,8 +372,8 @@ const App = () => {
               <p>ODD LINES</p>
             </div>
           </div>
-          {odds.length > 0 && <Bookmakers bookmakers={odds[0].bookmakers} />}
-          {odds.map((match, index) => (
+          {footballOdds.length > 0 && <Bookmakers bookmakers={footballOdds[0].bookmakers} />}
+          {footballOdds.map((match, index) => (
             <div key={index} className="match-container">
               {match.bookmakers[0] && (
                 <div className="grid-container">
