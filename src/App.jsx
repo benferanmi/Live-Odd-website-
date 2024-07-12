@@ -341,7 +341,6 @@ const App = () => {
                     <div className="grid-item oddttitle">
                       <p>{match.away_team}</p> <strong style={{padding: '0px 5px'}}>VS</strong>
                       <p>{match.home_team}</p>
-                      <p>Draw</p>
                       <span className="oddtline"></span>
                     </div>
                   </div>
@@ -381,7 +380,6 @@ const App = () => {
                     <div className="grid-item oddttitle">
                       <p>{match.away_team}</p> <strong style={{padding: '0px 5px'}}>VS</strong>
                       <p>{match.home_team}</p>
-                      <p>Draw</p>
                       <span className="oddtline"></span>
                     </div>
                   </div>
