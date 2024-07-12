@@ -27,11 +27,6 @@
   left: 0px;
 }
 
-@media screen and (max-width: 1230px) {
-  .banner-left-image {
-    left: 14%;
-  }
-}
 .banner-right-image {
   position: absolute;
   right: 0px;
