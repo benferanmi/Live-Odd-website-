@@ -1,0 +1,24 @@
+.bookmaker-head {
+  margin-top: 12px;
+}
+@media screen and (max-width: 500px) {
+  .bookmaker-head {
+    height: 22px;
+    padding: 3px 0;
+  }
+
+  .grid-item h3 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .bookmaker-head {
+    height: 22px;
+    padding: 3px 0;
+  }
+
+  .grid-item h3 {
+    font-size: 12px;
+  }
+}

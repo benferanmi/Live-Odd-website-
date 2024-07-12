@@ -1,8 +1,8 @@
 import Header from "./component/Header"
 import AmericanFootball from './assets/americanfootball.png'
 import Basketball from './assets/basketball.png'
-import { OddsData } from "./Oddjson"
-import { useState } from "react"
+// import { OddsData } from "./Oddjson"
+import { useEffect, useState } from "react"
 import './App.css'
 import Footer from "./component/Footer"
 import TeamImageOne from './assets/sportsbook.png'
@@ -22,46 +22,48 @@ import Sport6 from './assets/sport6.png'
 import Payone from './assets/payicon.png'
 import Paytwo from './assets/payicon1.png'
 import TeamFlex from "./component/TeamFlex"
+import axios from 'axios'
+import Bookmakers from "./component/sports/Bookmarker"
 
 
 const App = () => {
   // eslint-disable-next-line no-unused-vars
-  const [oddsData, setoddsData] = useState(OddsData);
   const [star] = useState(Star)
+  const [odds, setOdds] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const apiKey = 'ef9f27ac7b2093fc381686d461234539';
+  const sportKey = 'soccer';
 
 
-  async function fetchOddsData() {
-    try {
-      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-      const apiUrl = 'https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events/a512a48a58c4329048174217b2cc7ce0/odds?apiKey=ef9f27ac7b2093fc381686d461234539&regions=us&markets=player_pass_tds&oddsFormat=american';
-
-
-      const response = await fetch(proxyUrl + apiUrl, {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error ${response.status}`);
+  useEffect(() => {
+    const fetchOdds = async () => {
+      try {
+        const response = await axios.get(`https://api.the-odds-api.com/v4/sports/${sportKey}/odds`, {
+          params: {
+            apiKey: apiKey,
+            regions: 'us',       // Specify the region
+            markets: 'h2h',      // Specify the market type
+            oddsFormat: 'decimal' // Specify the odds format
+          },
+        });
+        setOdds(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
       }
+    };
 
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching odds data:', error);
-      throw error;
-    }
-  }
+    fetchOdds();
+  }, [apiKey, sportKey]);
 
 
-  fetchOddsData()
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  console.log(odds)
 
   return (
     <main>
@@ -84,7 +86,7 @@ const App = () => {
                   {/* <h1 className="hsize1 roboto-con">EVERY DEPOSIT MADE TO</h1> */}
                   <h1 className="hsize2 roboto-con bcontent-des ">Deposits will recieve up to $5000 freeplay
                   </h1>
-               
+
                   <p>(Join now to get 50% free discount)</p>
                 </div>
               </div>
@@ -265,7 +267,7 @@ const App = () => {
         </div>
       </section>
 
-    <section className="snags">
+      <section className="snags">
         <div className="snag">
           <div className="snag-heading">
             <h2>Snag Your Play-Through Bonus</h2>
@@ -284,7 +286,7 @@ const App = () => {
                 <span>2</span>
                 <h3>100% Bonus!</h3>
                 <p>
-                Make your first deposit of $50 and get $50 freeplay as first time customer !</p>
+                  Make your first deposit of $50 and get $50 freeplay as first time customer !</p>
               </div>
 
               <div className="snag-c-each">
@@ -307,128 +309,56 @@ const App = () => {
         </div>
       </section> */}
 
+
       {/* sport one */}
       <section className="odds">
         <div className="odd">
+
+
+
+
+        </div>
+      </section>
+
+      <div className="odds">
+        <div className="odd">
           <div className="odd-heads">
             <div className="odd-head">
-              <h1>BaseBall Team</h1>
+              <h1>SOCCER</h1>
               <p>ODD LINES</p>
             </div>
           </div>
-
-
-          <div className="odd-grid">
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Opeaner</th>
-                  <th><img src={Sport1} alt="" /> </th>
-                  <th><img src={Sport2} alt="" /> </th>
-                  <th><img src={Sport3} alt="" /> </th>
-                  <th><img src={Sport4} alt="" /> </th>
-                  <th><img src={Sport5} alt="" /> </th>
-                  <th><img src={Sport6} alt="" /> </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="oddttitle">BOS Vs NYY </div>
-                    <div className="oddtline"></div>
-                  </td>
-                  <td><span>+211 -113</span></td>
-                  <td><span>+011 -416</span></td>
-                  <td><span>+911 -43</span></td>
-                  <td><span>+431 -413</span></td>
-                  <td><span>+431 -223</span></td>
-                  <td><span>+056 -013</span></td>
-                  <td><span>+126 -138</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {odds.length > 0 && <Bookmakers bookmakers={odds[0].bookmakers} />}
+          {odds.map((match, index) => (
+            <div key={index} className="match-container">
+              {match.bookmakers[0] && (
+                <div className="grid-container">
+                  <div className="match-teams">
+                    <div className="grid-item oddttitle">
+                      <p>{match.away_team}</p>
+                      <p>{match.home_team}</p>
+                      <p>Draw</p>
+                      <span className="oddtline"></span>
+                    </div>
+                  </div>
+                  {match.bookmakers.map((bookmaker, index) => (
+                    <div key={index} className="grid-item align-center">
+                      <div className="match-odd">
+                        {bookmaker.markets[0].outcomes.map((outcome, index) => (
+                          <>
+                            <p key={index}>{outcome.price}</p>
+                          </>
+                        ))}
+                      </div>
+                      <span style={{ height: '15px' }}></span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
       {/* sport two */}
       <section className="odds">
@@ -799,7 +729,7 @@ const App = () => {
         </div>
       </section>
 
-  
+
 
       <section className="teams">
         <div className="team">
