@@ -328,18 +328,18 @@ const App = () => {
         <div className="odd">
           <div className="odd-heads">
             <div className="odd-head">
-              <h1>SOCCER</h1>
+              <h1>Basketball</h1>
               <p>ODD LINES</p>
             </div>
           </div>
-          {soccerOdds.length > 0 && <Bookmakers bookmakers={soccerOdds[0].bookmakers} />}
-          {soccerOdds.map((match, index) => (
+          {basketballOdds.length > 0 && <Bookmakers bookmakers={basketballOdds[0].bookmakers} />}
+          {basketballOdds.map((match, index) => (
             <div key={index} className="match-container">
               {match.bookmakers[0] && (
                 <div className="grid-container">
                   <div className="match-teams">
                     <div className="grid-item oddttitle">
-                      <p>{match.away_team}</p>
+                      <p>{match.away_team}</p> <strong style={{padding: '0px 5px'}}>VS</strong>
                       <p>{match.home_team}</p>
                       <p>Draw</p>
                       <span className="oddtline"></span>
@@ -368,7 +368,7 @@ const App = () => {
         <div className="odd">
           <div className="odd-heads">
             <div className="odd-head">
-              <h1>SOCCER</h1>
+              <h1>Football</h1>
               <p>ODD LINES</p>
             </div>
           </div>
@@ -379,7 +379,7 @@ const App = () => {
                 <div className="grid-container">
                   <div className="match-teams">
                     <div className="grid-item oddttitle">
-                      <p>{match.away_team}</p>
+                      <p>{match.away_team}</p> <strong style={{padding: '0px 5px'}}>VS</strong>
                       <p>{match.home_team}</p>
                       <p>Draw</p>
                       <span className="oddtline"></span>
@@ -409,7 +409,7 @@ const App = () => {
         <div className="odd">
           <div className="odd-heads">
             <div className="odd-head">
-              <h1>Football Team</h1>
+              <h1>Soccer Team</h1>
               <p>ODD LINES</p>
             </div>
           </div>
