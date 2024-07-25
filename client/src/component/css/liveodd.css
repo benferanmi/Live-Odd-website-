@@ -1,0 +1,83 @@
+.live-odd-hgrids {
+  display: block;
+  height: 45px;
+  background-color: #ffffffc2;
+}
+
+.live-odd-hgrid {
+  display: grid;
+  grid-template-columns: 55% repeat(3, 15%);
+  align-items: center;
+  justify-content: center;
+}
+.live-odd-hgrid div {
+  color: black;
+  line-height: 40px;
+  font-weight: 500;
+}
+.live-odd-hgrid div,
+.los-bookmaker span {
+  text-align: center;
+}
+
+.live-odd-sgrids {
+  display: block;
+  height: 75px;
+  margin-top: 10px;
+}
+
+.live-odd-sgrid {
+  display: grid;
+  grid-template-columns: 55% repeat(1, 45%);
+}
+
+.live-odd-sgrid .los-team span {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+.los-team {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+
+.los-bookmaker {
+  display: grid;
+  grid-template-columns: repeat(3, 33.3%);
+  align-items: center;
+  justify-content: center;
+}
+
+.live-odd-time {
+  color: var(--orange-text);
+  margin: 12px 0;
+}
+
+.live-odd-each {
+  padding: 10px 0;
+}
+
+.los-bookmaker span {
+  height: 100%;
+  width: 100%;
+  line-height: 50px;
+}
+.odlivegshty_uty {
+  margin-top: 4em;
+}
+
+@media screen and (max-width: 500px) {
+  .live-odd-time {
+    font-size: 12px;
+  } 
+  .los-team {
+    gap: 10px;
+  }
+  .live-odd-sgrid .los-team span {
+    font-size: 15px;
+  }
+  .live-odd-sgrids {
+    height: 58px;
+  }
+}
