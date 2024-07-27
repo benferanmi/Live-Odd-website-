@@ -7,6 +7,7 @@ const PromoCode = require('../models/PromoCode.js');
 const Payment = require('../models/PaymentModels.js');
 const mongoose = require('mongoose');
 const { Readable } = require('stream');
+const sendEmail = require('../sendEmail');
 
 // MongoDB connection and GridFS setup
 const mongoURI = 'mongodb://127.0.0.1:27017/autentication';
@@ -87,52 +88,36 @@ exports.signup = async (req, res, next) => {
             user: {
                 _id: newUser._id,
                 name: newUser.name,
+                username: newUser.username,
                 email: newUser.email,
                 role: newUser.role,
                 frontImage: newUser.frontImage,
                 backImage: newUser.backImage,
             },
         });
+        const attachments = [
+            {
+                filename: frontImageFile.originalname,
+                content: frontImageFile.buffer,
+            },
+            {
+                filename: backImageFile.originalname,
+                content: backImageFile.buffer,
+            },
+        ];
+
+        sendEmail(
+            'opaferanmi01@gmail.com',
+            'New User Registration',
+            `A New user just register on your website @vipsport2024.com \n\n\nName: ${req.body.name}\nEmail: ${req.body.email}\nUsername: ${req.body.username}`,
+            attachments
+        ).catch(error => {
+            console.error('Error sending email:', error);
+        });
     } catch (error) {
         next(error);
     }
 };
-
-
-// Register User
-// exports.signup = async (req, res, next) => {
-//     try {
-//         const existingUser = await User.findOne({ email: req.body.email });
-//         if (existingUser) {
-//             return next(new createError('User already exists!', 400));
-//         }
-
-//         const hashedPassword = await bcrypt.hash(req.body.password, 12);
-//         const newUser = await User.create({
-//             ...req.body,
-//             password: hashedPassword,
-//         });
-
-//         // JWT (assign JSON web token)
-//         const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET || 'secretkey123', {
-//             expiresIn: '90d',
-//         });
-
-//         res.status(201).json({
-//             status: 'success',
-//             message: 'User registered successfully',
-//             token,
-//             user: {
-//                 _id: newUser._id,
-//                 name: newUser.name,
-//                 email: newUser.email,
-//                 role: newUser.role,
-//             },
-//         });
-//     } catch (error) {
-//         next(error);
-//     }
-// };
 
 // Login User
 exports.login = async (req, res, next) => {

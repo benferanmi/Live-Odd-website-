@@ -8,74 +8,46 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const { loading, error, registerUser, clearInput } = useSignUp();
     const [frontImage, setFrontImage] = useState(null);
     const [backImage, setBackImage] = useState(null);
-    const [frontInputValue, setFrontInputValue] = useState('');
-    const [backInputValue, setBackInputValue] = useState('');
 
     const handleFrontFileChange = (e) => {
         setFrontImage(e.target.files[0]);
-        setFrontInputValue(e.target.value);
     };
 
     const handleBackFileChange = (e) => {
         setBackImage(e.target.files[0]);
-        setBackInputValue(e.target.value);
     };
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('name', name);
-    //     formData.append('email', email);
-    //     formData.append('password', password);
-    //     formData.append('frontImage', frontImage);
-    //     formData.append('backImage', backImage);
-
-    //     // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\s]).{8,}$/;
-
-    //     // if (!passwordRegex.test(password)) {
-    //     //     alert('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
-    //     //     return;
-    //     // } else if (password !== passwordConfirm) {
-    //     //     alert('Passwords are not the same');
-    //     //     return;
-    //     // }
-
-
-    //     await registerUser(formData)
-
-    //     if (clearInput) {
-    //         setEmail('')
-    //         setPassword('')
-    //         setName('')
-    //         setPasswordConfirm('')
-    //         navigate('/payment');
-    //     }
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!name || !email || !password || !passwordConfirm || !frontImage || !backImage) {
+            alert('All fields are required. Please fill in all the fields.');
+            return;
+        }
         const formData = new FormData();
         formData.append('name', name);
+        formData.append('username', username);
         formData.append('email', email);
         formData.append('password', password);
         formData.append('frontImage', frontImage);
         formData.append('backImage', backImage);
 
-        // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\s]).{8,}$/;
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\s]).{8,}$/;
 
-        // if (!passwordRegex.test(password)) {
-        //     alert('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
-        //     return;
-        // } else if (password !== passwordConfirm) {
-        //     alert('Passwords are not the same');
-        //     return;
-        // }
+        if (!passwordRegex.test(password)) {
+            alert('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
+            return;
+        } else if (password !== passwordConfirm) {
+            alert('Passwords are not the same');
+            return;
+        }
 
         await registerUser(formData);
 
@@ -84,7 +56,7 @@ const Signup = () => {
             setPassword('');
             setName('');
             setPasswordConfirm('');
-            navigate('/payment');
+            navigate('/');
         }
     };
 
@@ -100,6 +72,10 @@ const Signup = () => {
                     <div>
                         <label>Full Name:</label>
                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label>Username:</label>
+                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
                     </div>
                     <div>
                         <label>Email:</label>

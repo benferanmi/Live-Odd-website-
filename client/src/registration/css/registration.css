@@ -16,8 +16,8 @@
   padding: 3em 5em;
 }
 .reg-head {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 .reg-page h2 {
   color: white;
@@ -51,16 +51,32 @@ label {
 }
 
 button {
-    background-color: var(--button-bg-color);
-    border-radius: 35px;
-    padding: 14px 40px;
-    font-weight: 700;
-    color: black;
-    font-size: 20px;
-    margin-top: 3em;
+  background-color: var(--button-bg-color);
+  border-radius: 35px;
+  padding: 14px 40px;
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+  margin-top: 3em;
 }
 
 .reg-info {
   color: whitesmoke;
 }
+input[type="file" i] {
+  height: 100%;
+  width: 90%;
+  padding: 10px;
+  margin: auto;
+}
 
+@media screen and (max-width: 500px) {
+  .reg-pages {
+    width: 95%;
+    margin: auto;
+  }
+
+  .reg-page {
+    padding: 10px;
+  }
+}

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Header from "./component/Header"
 import AmericanFootball from './assets/americanfootball.png'
 import Basketball from './assets/basketball.png'
@@ -17,18 +16,19 @@ import Paytwo from './assets/payicon1.png'
 import TeamFlex from "./component/TeamFlex"
 import LiveOdds from "./component/LiveOdd"
 import { Link } from "react-router-dom"
+import RotatingContainer from "./component/RotatingContainer"
+
 
 
 const Home = () => {
-  // eslint-disable-next-line no-unused-vars
   const [star] = useState(Star)
-
   return (
     <main>
-
-
       <section className="herobanners">
         <Header />
+        <div style={{ background: '#67456a7d' }}>
+          <RotatingContainer />
+        </div>
         <div className="herobanner">
           <div className="banners">
             <div className="banner">

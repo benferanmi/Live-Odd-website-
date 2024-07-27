@@ -9,32 +9,34 @@ const Login = () => {
   // eslint-disable-next-line no-unused-vars
   const { loading, error, loginUser, clearInput } = useLogin();
 
-
+  // eslint-disable-next-line no-unused-vars
   const values = {
     email: email, password: password
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\s]).{8,}$/;
+    // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\s]).{8,}$/;
 
-    if (!passwordRegex.test(values.password)) {
-      alert('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
-      return;
-    }
+    // if (!passwordRegex.test(values.password)) {
+    //   alert('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
+    //   return;
+    // }
 
-    await loginUser(values);
-    if (clearInput) {
-      setEmail('')
-      setPassword('')
-    }
+    // await loginUser(values);
+    // if (clearInput) {
+    //   setEmail('')
+    //   setPassword('')
+    // }
+    window.location.href = 'http://www.5plays.com/';
+
   };
 
   return (
     <div className='reg-pages'>
       <div className='reg-page'>
         <div className='reg-head'>
-        <h2>Login</h2>
+          <h2>Login</h2>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -48,9 +50,9 @@ const Login = () => {
           </div>
 
           <button type="submit">Login</button>
-          <br/>
-          <br/>
-          {loading ? 'is loading' :  <Link className='reg-info' to="/auth/signup">Do not have and account yet, <strong>Create Account</strong></Link>}
+          <br />
+          <br />
+          {loading ? 'is loading' : <Link className='reg-info' to="/auth/signup">Do not have and account yet, <strong>Create Account</strong></Link>}
           <p>{error}</p>
         </form>
       </div>
